@@ -1,0 +1,47 @@
+{
+  "name": "vc-system",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "clean": "rimraf dist",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest --testPathPattern=unit",
+    "test:integration": "jest --testPathPattern=integration",
+    "test:e2e": "jest --testPathPattern=e2e",
+    "test:security": "jest --testPathPattern=security",
+    "test:crypto": "jest --testNamePattern='Cryptographic Integration Tests'",
+    "test:real-world": "jest --testNamePattern='Real-World VC Scenarios'",
+    "test:real-bbs": "jest --testPathPattern='real-bbs-integration'",
+    "test:diagnostics": "jest --testNamePattern='BBS Library Diagnostics'",
+    "demo": "ts-node src/demo/interactive-demo.ts"
+  },
+  "keywords": [
+    "verifiable-credentials",
+    "bbs-signatures",
+    "zk-proofs",
+    "ielts"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "A Verifiable Credentials system for IELTS certification with BBS signatures and ZK proofs",
+  "dependencies": {
+    "@jayanth-kumar-morem/indexed-merkle-tree": "^1.1.3",
+    "@mattrglobal/bbs-signatures": "^2.0.0",
+    "circomlibjs": "^0.1.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0",
+    "rimraf": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "ts-jest": "^29.0.0"
+  }
+}
+
