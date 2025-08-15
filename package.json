@@ -18,7 +18,9 @@
     "test:real-world": "jest --testNamePattern='Real-World VC Scenarios'",
     "test:real-bbs": "jest --testPathPattern='real-bbs-integration'",
     "test:diagnostics": "jest --testNamePattern='BBS Library Diagnostics'",
-    "demo": "ts-node src/demo/interactive-demo.ts"
+    "demo": "ts-node src/demo/interactive-demo.ts",
+    "demo:merkle": "ts-node src/demo/run-merkle-demo.ts",
+    "demo:tree": "ts-node src/demo/merkle-tree-demo.ts"
   },
   "keywords": [
     "verifiable-credentials",

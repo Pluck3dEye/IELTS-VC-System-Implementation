@@ -12,6 +12,7 @@ This project implements a Verifiable Credentials (VC) system for IELTS certifica
   - [Running the Application](#running-the-application)
   - [Running in Development Mode](#running-in-development-mode)
 - [Running Tests](#running-tests)
+- [Merkle Tree Demonstrations](#merkle-tree-demonstrations)
 - [Available Scripts](#available-scripts)
 - [Project Structure](#project-structure)
 - [Dependencies](#dependencies)
@@ -111,6 +112,80 @@ You can also run tests in watch mode or generate a coverage report:
     npm run test:coverage
     ```
 
+## Merkle Tree Demonstrations
+
+This project includes several ways to explore and understand how the Indexed Merkle Tree works in the Verifiable Credentials system. The Indexed Merkle Tree is a crucial component that maintains credential integrity while enabling Zero-Knowledge proofs.
+
+### Interactive Merkle Tree Demo
+
+Run a comprehensive demonstration that shows step-by-step how the Indexed Merkle Tree operates:
+
+```bash
+npm run demo:merkle
+```
+
+This demonstration will show you:
+- Tree initialization with Poseidon hash function
+- Adding credentials to the tree and watching root changes
+- Current tree state with leaf nodes and root hash
+- Zero-Knowledge proof generation with selective disclosure
+- Proof verification and integrity checks
+
+### Enhanced System Demo with Merkle Tree Logging
+
+Run the main system demonstration with detailed merkle tree information:
+
+```bash
+npm run dev
+```
+
+This enhanced version includes:
+- Merkle tree root logging during credential registration
+- ZK proof structure details during presentation creation
+- Tree index information for registered credentials
+
+### Test-based Merkle Tree Demonstration
+
+Run interactive tests that demonstrate merkle tree functionality:
+
+```bash
+npm test -- tests/demo/merkle-tree-demo.test.ts
+```
+
+This test suite shows:
+- Step-by-step tree operations with assertions
+- Different proof revelation scenarios (name only, scores, etc.)
+- Proof verification with various field combinations
+- Tree state validation at each step
+
+### Understanding the Output
+
+When running the merkle tree demonstrations, you'll see:
+
+- **Tree Root**: A large number that uniquely represents the current tree state
+- **Tree Index**: Sequential numbers (0, 1, 2...) assigned to each credential
+- **Leaf Nodes**: Hash values representing individual credentials
+- **ZK Proofs**: Cryptographic proofs that allow selective disclosure
+- **Revealed Attributes**: Only the fields you choose to disclose
+
+### Example Output
+
+```
+ INDEXED MERKLE TREE DEMONSTRATION
+=====================================
+
+1. Initializing Indexed Merkle Tree...
+    Tree initialized with Poseidon hash function
+    Initial tree root: 20904263309775236245566347617139780413277211320889904019085937429497372345062
+
+2. Adding credentials to the Indexed Merkle Tree...
+   Adding Credential 1: Alice Johnson
+   Root before: 20904263309775236245566347617139780413277211320889904019085937429497372345062
+   Root after:  635952219856768740976092005275438554701686686927562320539835476702228813184
+   Tree index:  0
+   Root changed: Yes
+```
+
 ## Available Scripts
 
 Here is a list of the most important scripts available in `package.json`:
@@ -121,6 +196,8 @@ Here is a list of the most important scripts available in `package.json`:
 -   `npm run clean`: Removes the `dist` directory.
 -   `npm test`: Runs all tests.
 -   `npm run demo`: Runs an interactive demo of the system.
+-   `npm run demo:merkle`: Runs the Indexed Merkle Tree demonstration.
+-   `npm run demo:tree`: Alternative command for merkle tree demo.
 
 ## Project Structure
 
@@ -129,10 +206,11 @@ The project is organized as follows:
 -   `src/`: Contains the source code.
     -   `components/`: Core components of the VC system (Holder, Issuer, Verifier, Registry).
     -   `core/`: Cryptographic primitives (BBS+ signatures, ZK proofs).
-    -   `demo/`: Interactive demo scripts.
+    -   `demo/`: Interactive demo scripts and merkle tree demonstrations.
     -   `types/`: TypeScript type definitions.
 -   `tests/`: Contains all test files.
     -   `unit/`, `integration/`, `e2e/`, `security/`, `system/`: Different categories of tests.
+    -   `demo/`: Demonstration and educational test files.
 -   `dist/`: Compiled JavaScript output.
 
 ## Dependencies

@@ -49,7 +49,10 @@ async function demonstrateVCSystem() {
     console.log(`Credential issued with ID: ${credential.id}\n`);
 
     // Register credential
-    await registry.registerCredential(credential);
+    console.log('Registering credential in indexed merkle tree...');
+    const registryEntry = await registry.registerCredential(credential);
+    console.log(`📊 Merkle Tree Root after registration: ${registry.getMerkleRoot()}`);
+    console.log(`🌳 Credential added at tree index: ${registryEntry.merkleTreeIndex}`);
 
     // 2. Holder stores credential
     console.log('Holder storing credential...');
@@ -68,7 +71,11 @@ async function demonstrateVCSystem() {
     // 4. Holder creates presentation
     console.log('Creating verifiable presentation...');
     const presentation = await holder.createPresentation(presentationRequest);
-    console.log('Presentation created with ZK proof\n');
+    console.log('Presentation created with ZK proof');
+    console.log(`🔐 ZK Proof Type: ${presentation.proof.type}`);
+    console.log(`🌳 Merkle Root in Proof: ${presentation.proof.merkleRoot}`);
+    console.log('🎯 Revealed Attributes:', Object.keys(presentation.proof.revealedAttributes));
+    console.log('');
 
     // 5. Verifier validates presentation
     console.log('Verifying presentation...');
