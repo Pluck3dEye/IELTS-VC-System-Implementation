@@ -148,7 +148,12 @@ describe('ZKManager', () => {
         created: new Date().toISOString(),
         proofPurpose: 'authentication',
         merkleRoot: '',
-        zkProof: null,
+        zkProof: {
+          leaf: '',
+          path: [],
+          indices: [],
+          root: ''
+        },
         revealedAttributes: {}
       };
       

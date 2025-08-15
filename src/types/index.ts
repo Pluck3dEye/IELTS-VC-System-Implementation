@@ -56,12 +56,34 @@ export interface VerifiablePresentation {
   proof: ZKProof;
 }
 
+export interface MerkleProof {
+  leaf: string;
+  path: string[];
+  indices: number[];
+  root: string;
+  membershipProof?: {
+    leafIndex: number;
+    siblings: string[];
+    directions: number[];
+  };
+  nonMembershipProof?: {
+    query: string;
+    preLeaf: {
+      val: string;
+      nextVal: string;
+      nextIdx: number;
+    };
+    path: string[];
+    directions: number[];
+  };
+}
+
 export interface ZKProof {
   type: string;
   created: string;
   proofPurpose: string;
   merkleRoot: string;
-  zkProof: any;
+  zkProof: MerkleProof;
   revealedAttributes: Record<string, any>;
 }
 
