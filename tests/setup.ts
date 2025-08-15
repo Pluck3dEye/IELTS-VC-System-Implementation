@@ -1,7 +1,7 @@
 // Global test setup
 beforeAll(async () => {
   // Setup global test environment
-  console.log('🧪 Setting up test environment...');
+  console.log('Setting up test environment...');
   
   // Suppress BBS warnings during tests
   const originalWarn = console.warn;
@@ -20,7 +20,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   // Cleanup after all tests
-  console.log('🧹 Cleaning up test environment...');
+  console.log('Cleaning up test environment...');
 });
 
 // Extend Jest matchers if needed
